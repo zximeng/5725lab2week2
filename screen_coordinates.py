@@ -18,12 +18,8 @@ blue = (0, 0, 128)
 screen = pygame.display.set_mode((320, 240))
 my_font= pygame.font.Font(None, 50)
 my_buttons= { 'quit':(80,180)}
-screen.fill(BLACK)               # Erase the Work space     
-for my_text, text_pos in my_buttons.items():    
-    text_surface = my_font.render(my_text, True, WHITE)    
-    rect = text_surface.get_rect(center=text_pos)
-    screen.blit(text_surface, rect)
-pygame.display.flip()
+
+
 start = time.time()
 
 flag = True
@@ -31,7 +27,12 @@ while flag:
     for event in pygame.event.get():        
         if(event.type is MOUSEBUTTONDOWN):            
             pos = pygame.mouse.get_pos()           
-        elif(event.type is MOUSEBUTTONUP):            
+        elif(event.type is MOUSEBUTTONUP):
+            screen.fill(BLACK)               # Erase the Work space     
+            for my_text, text_pos in my_buttons.items():    
+                text_surface = my_font.render(my_text, True, WHITE)    
+                rect = text_surface.get_rect(center=text_pos)
+                screen.blit(text_surface, rect)            
             pos = pygame.mouse.get_pos() 
             x,y = pos
             toprint = str(x) + ',' + str(y)
