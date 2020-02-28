@@ -50,13 +50,15 @@ def displaycollide():
         if(not GPIO.input(27)):
             flag1 = False
         pygame.display.flip()
-        pos = pygame.mouse.get_pos() 
-        x,y = pos
-        if y > 120:                
-            if x < 160:    
-                print ('quit button pressed')
-                flag1 = False
-                
+        for event in pygame.event.get():
+            if(event.type is MOUSEBUTTONUP):
+                pos = pygame.mouse.get_pos() 
+                x,y = pos
+                if y > 120:                
+                    if x < 160:    
+                        print ('quit button pressed')
+                        flag1 = False
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27,GPIO.IN,pull_up_down = GPIO.PUD_UP)   
 os.putenv('SDL_VIDEODRIVER', 'fbcon')   # Display on piTFT
