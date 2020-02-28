@@ -34,7 +34,8 @@ while flag:
         elif(event.type is MOUSEBUTTONUP):            
             pos = pygame.mouse.get_pos() 
             x,y = pos
-            text = my_font.render(pos, True, green, blue)
+            toprint = str(x) + ',' + str(y)
+            text = my_font.render(toprint, True, green, blue)
             textRect = text.get_rect()  
             textRect.center = (160, 120)
             screen.blit(text, textRect) 
