@@ -36,10 +36,10 @@ while flag:
             x,y = pos
             toprint = str(x) + ',' + str(y)
             text = my_font.render(toprint, True, WHITE)
-            textRect = text.get_rect(center=text_pos)  
-            textRect.center = (160, 120)
-            print(toprint)
+            textRect = text.get_rect(center=(160,120))  
             screen.blit(text, textRect)
+            pygame.display.flip()
+            print(toprint)          
             if y > 120:                
                 if x < 160:    
                     print ('quit button pressed')
