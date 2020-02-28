@@ -40,7 +40,8 @@ while flag:
             textRect = text.get_rect(center=(160,120))  
             screen.blit(text, textRect)
             pygame.display.flip()
-            print(toprint)          
+            print(toprint)
+            os.system("scrot")          
             if y > 120:                
                 if x < 160:    
                     print ('quit button pressed')
