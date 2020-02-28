@@ -10,7 +10,7 @@ os.putenv('SDL_FBDEV', '/dev/fb1')
 os.putenv('SDL_MOUSEDRV', 'TSLIB')     # Track mouse clicks on piTFT
 os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
 pygame.init()
-pygame.mouse.set_visible(False)
+pygame.mouse.set_visible(True)
 WHITE = 255, 255, 255
 BLACK = 0,0,0
 screen = pygame.display.set_mode((320, 240))
@@ -23,7 +23,7 @@ for my_text, text_pos in my_buttons.items():
     screen.blit(text_surface, rect)
 pygame.display.flip()
 start = time.time()
-pygame.mouse.set_visible(True)
+
 flag = True
 while flag:       
     for event in pygame.event.get():        
