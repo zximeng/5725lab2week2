@@ -38,6 +38,7 @@ while flag:
             text = my_font.render(toprint, True, WHITE)
             textRect = text.get_rect(center=text_pos)  
             textRect.center = (160, 120)
+            print(toprint)
             screen.blit(text, textRect)
             if y > 120:                
                 if x < 160:    
