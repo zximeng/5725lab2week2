@@ -5,12 +5,12 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27,GPIO.IN,pull_up_down = GPIO.PUD_UP)   
-# os.putenv('SDL_VIDEODRIVER', 'fbcon')   # Display on piTFT
-# os.putenv('SDL_FBDEV', '/dev/fb1')     
-# os.putenv('SDL_MOUSEDRV', 'TSLIB')     # Track mouse clicks on piTFT
-# os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
+os.putenv('SDL_VIDEODRIVER', 'fbcon')   # Display on piTFT
+os.putenv('SDL_FBDEV', '/dev/fb1')     
+os.putenv('SDL_MOUSEDRV', 'TSLIB')     # Track mouse clicks on piTFT
+os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
 pygame.init()
-pygame.mouse.set_visible(True)
+pygame.mouse.set_visible(False)
 WHITE = 255, 255, 255
 BLACK = 0,0,0
 green = (0, 255, 0) 
