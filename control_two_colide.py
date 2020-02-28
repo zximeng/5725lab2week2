@@ -22,48 +22,59 @@ def displaycollide():
     start = time.time()
     flag1 = True  # global flag
     ballrect1.move(inits1)
+    timetosleep = 0.01
+    pause = False
+    while (flag1): 
+        if( not pause) : 
+            ballrect = ballrect.move(speed)    
+            if ballrect.left < 0 or ballrect.right > width:       
+                speed[0] = -speed[0]    
+            if ballrect.top < 0 or ballrect.bottom > height:     
+                speed[1] = -speed[1]
+            ballrect1 = ballrect1.move(speed1)    
+            if ballrect1.left < 0 or ballrect1.right > width:       
+                speed1[0] = -speed1[0]    
+            if ballrect1.top < 0 or ballrect1.bottom > height:     
+                speed1[1] = -speed1[1]
+            if (ballrect.colliderect(ballrect1) == True):
+                tmp,tmp1 = speed1[0],speed1[1]
+                speed1[0] = speed[0]
+                speed1[1] = speed[1]
+                speed[0] = tmp
+                speed[1] = tmp1
+            
+            time.sleep(timetosleep)
+            screen.fill(black)               # Erase the Work space   
+            screen.blit(ball, ballrect)   # Combine Ball surface with workspace 
+            screen.blit(ball1, ballrect1)
+            my_font_another= pygame.font.Font(None, 20)
+            my_buttons_another = { 'pause':(40,180), 'fast':(120,180),'slow':(200,180), 'back':(280,180)}
+            for my_text, text_pos in my_buttons_another.items():    
+                    text_surface = my_font_another.render(my_text, True, WHITE)    
+                    rect = text_surface.get_rect(center=text_pos)
+                    screen.blit(text_surface, rect)
 
-    while (flag1):    
-        ballrect = ballrect.move(speed)    
-        if ballrect.left < 0 or ballrect.right > width:       
-            speed[0] = -speed[0]    
-        if ballrect.top < 0 or ballrect.bottom > height:     
-            speed[1] = -speed[1]
-        ballrect1 = ballrect1.move(speed1)    
-        if ballrect1.left < 0 or ballrect1.right > width:       
-            speed1[0] = -speed1[0]    
-        if ballrect1.top < 0 or ballrect1.bottom > height:     
-            speed1[1] = -speed1[1]
-        if (ballrect.colliderect(ballrect1) == True):
-            tmp,tmp1 = speed1[0],speed1[1]
-            speed1[0] = speed[0]
-            speed1[1] = speed[1]
-            speed[0] = tmp
-            speed[1] = tmp1
-        time.sleep(0.01)
-        screen.fill(black)               # Erase the Work space   
-        screen.blit(ball, ballrect)   # Combine Ball surface with workspace 
-        screen.blit(ball1, ballrect1)
-        my_font_another= pygame.font.Font(None, 20)
-        my_buttons_another = { 'pause':(40,180), 'fast':(120,180),'slow':(200,180), 'back':(280,180)}
-        for my_text, text_pos in my_buttons_another.items():    
-                text_surface = my_font_another.render(my_text, True, WHITE)    
-                rect = text_surface.get_rect(center=text_pos)
-                screen.blit(text_surface, rect)
-
-        if(not time.time() - start < 10):
-            flag1 = False
-        if(not GPIO.input(27)):
-            flag1 = False
-        pygame.display.flip()
+            if(not time.time() - start < 10):
+                flag1 = False
+            if(not GPIO.input(27)):
+                flag1 = False
+            pygame.display.flip()
         for event in pygame.event.get():
             if(event.type is MOUSEBUTTONUP):
                 pos = pygame.mouse.get_pos() 
                 x,y = pos
-                if y > 120:                
+                if y > 120:
+                               
                     if x > 240:    
                         print ('quit button pressed')
                         flag1 = False
+                    elif x > 160:
+                        timetosleep = 0.05
+                    elif x > 80:
+                        timetosleep = 0.005
+                    else:
+                        pause = True
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27,GPIO.IN,pull_up_down = GPIO.PUD_UP)   
