@@ -15,7 +15,7 @@ WHITE = 255, 255, 255
 BLACK = 0,0,0
 screen = pygame.display.set_mode((320, 240))
 my_font= pygame.font.Font(None, 50)
-my_buttons= { 'button1':(80,180), 'button2':(240,180)}
+my_buttons= { 'quit':(80,180)}
 screen.fill(BLACK)               # Erase the Work space     
 for my_text, text_pos in my_buttons.items():    
     text_surface = my_font.render(my_text, True, WHITE)    
@@ -34,9 +34,9 @@ while flag:
             x,y = pos
             if y > 120:                
                 if x < 160:    
-                    print ('button1 pressed')              
-                else:                    
-                    print ('button2 pressed')
+                    print ('quit button pressed')
+                    flag = False
+
     if(not time.time() - start < 30):
 		flag = False
     if(not GPIO.input(27)):
