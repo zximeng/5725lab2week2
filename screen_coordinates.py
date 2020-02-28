@@ -32,7 +32,7 @@ while flag:
         elif(event.type is MOUSEBUTTONUP):            
             pos = pygame.mouse.get_pos() 
             x,y = pos
-            text = font.render(pos, True, green, blue)
+            text = my_font.render(pos, True, green, blue)
             textRect = text.get_rect()  
             textRect.center = (160, 120)
 
