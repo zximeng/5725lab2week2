@@ -13,6 +13,8 @@ pygame.init()
 pygame.mouse.set_visible(True)
 WHITE = 255, 255, 255
 BLACK = 0,0,0
+green = (0, 255, 0) 
+blue = (0, 0, 128) 
 screen = pygame.display.set_mode((320, 240))
 my_font= pygame.font.Font(None, 50)
 my_buttons= { 'quit':(80,180)}
@@ -35,6 +37,7 @@ while flag:
             text = my_font.render(pos, True, green, blue)
             textRect = text.get_rect()  
             textRect.center = (160, 120)
+            screen.blit(text, textRect) 
 
     if(not time.time() - start < 30):
 		flag = False
