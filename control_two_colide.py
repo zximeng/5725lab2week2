@@ -50,7 +50,6 @@ def displaycollide():
                 text_surface = my_font_another.render(my_text, True, WHITE)    
                 rect = text_surface.get_rect(center=text_pos)
                 screen.blit(text_surface, rect)
-                break
 
         if(not time.time() - start < 10):
             flag1 = False
