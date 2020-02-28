@@ -23,7 +23,9 @@ for my_text, text_pos in my_buttons.items():
     screen.blit(text_surface, rect)
 pygame.display.flip()
 start = time.time()
-while True:       
+pygame.mouse.set_visible(True)
+flag = True
+while flag:       
     for event in pygame.event.get():        
         if(event.type is MOUSEBUTTONDOWN):            
             pos = pygame.mouse.get_pos()           
@@ -35,7 +37,7 @@ while True:
                     print ('button1 pressed')              
                 else:                    
                     print ('button2 pressed')
-    if(not time.time() - start < 3):
+    if(not time.time() - start < 30):
 		flag = False
     if(not GPIO.input(27)):
 		flag = False
