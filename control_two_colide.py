@@ -54,7 +54,7 @@ def displaycollide():
                     rect = text_surface.get_rect(center=text_pos)
                     screen.blit(text_surface, rect)
 
-            if(not time.time() - start < 10):
+            if(not time.time() - start < 30):
                 flag1 = False
             if(not GPIO.input(27)):
                 flag1 = False
