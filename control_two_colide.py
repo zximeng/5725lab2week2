@@ -73,7 +73,7 @@ def displaycollide():
                     elif x > 80:
                         timetosleep = 0.005
                     else:
-                        pause = True
+                        pause = not pause
 
 
 GPIO.setmode(GPIO.BCM)
